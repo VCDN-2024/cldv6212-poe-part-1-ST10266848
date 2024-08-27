@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ABC_Retail_POE.Models.Product>
+
+<h1>Products</h1>
+<a href="@Url.Action("AddProduct", "Products")" class="btn btn-primary">Add New Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price (ZAR)</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductCategory</td>
+                <td>@product.ProductName</td>
+                <td>@product.ProductDescription</td>
+                <td>@product.ProductPrice,99</td>
+                <td> @* product image *@
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="@product.ProductName" style="width:100px;height:auto;" />
+                    }
+                </td>
+                <td>
+                    <form asp-action="DeleteProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="partitionKey" value="@product.PartitionKey" />
+                        <input type="hidden" name="rowKey" value="@product.RowKey" />
+                        <input type="hidden" name="ImageUrl" value="@product.ImageUrl" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

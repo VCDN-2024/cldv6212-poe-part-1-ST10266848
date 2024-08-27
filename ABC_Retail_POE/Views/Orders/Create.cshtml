@@ -1,0 +1,65 @@
+﻿@model ABC_Retail_POE.Models.Order
+
+@{
+    var users = ViewData["Users"] as List<ABC_Retail_POE.Models.User>;
+    var products = ViewData["Products"] as List<ABC_Retail_POE.Models.Product>;
+}
+
+<h1>Place an Order</h1>
+
+@if (users == null || users.Count == 0 || products == null || products.Count == 0)
+{
+    <div class="alert alert-warning">
+        No users or products available! Please ensure they are added first!
+    </div>
+}
+else
+{
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="UserId">Select User</label>
+            <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(users, "UserId", "UserFullName"))">
+                <option value="">-- Select User --</option>
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductId">Select Product</label>
+            <select asp-for="ProductId" class="form-control" asp-items="@(new SelectList(products, "ProductId", "ProductName"))">
+                <option value="">-- Select Product --</option>
+            </select>
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="OrderDate"></label>
+            <input asp-for="OrderDate" class="form-control" type="datetime" />
+            <span asp-validation-for="OrderDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardName" class="control-label"></label>
+            <input asp-for="CreditCardName" class="form-control" />
+            <span asp-validation-for="CreditCardName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardNumber" class="control-label"></label>
+            <input asp-for="CreditCardNumber" class="form-control" />
+            <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardExpDate" class="control-label"></label>
+            <input asp-for="CreditCardExpDate" class="form-control" />
+            <span asp-validation-for="CreditCardExpDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreditCardCCVcode" class="control-label"></label>
+            <input asp-for="CreditCardCCVcode" class="form-control" />
+            <span asp-validation-for="CreditCardCCVcode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShippingAddress" class="control-label"></label>
+            <input asp-for="ShippingAddress" class="form-control" />
+            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+}

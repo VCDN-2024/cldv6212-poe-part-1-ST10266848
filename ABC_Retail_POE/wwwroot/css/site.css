@@ -1,0 +1,55 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Style for the image upload input */
+input[type="file"] {
+    display: inline-block; /* Makes the input inline for alignment */
+    padding: 10px; /* Adds padding inside the input */
+    margin-top: 10px; /* Adds space above the input */
+    margin-bottom: 15px; /* Adds space below the input */
+    border: 2px solid #ccc; /* Light border around the input */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    font-size: 14px; /* Font size for the text */
+    width: 30%; /* Full width input to make it look better */
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
+.orange-button {
+    margin-top: 15px;
+    background-color: #df6919; /* Slightly brighter orange */
+    color: white;              /* Text color */
+    border: none;              /* No border */
+    padding: 10px 20px;        /* Padding for the button */
+    font-size: 16px;           /* Font size */
+    cursor: pointer;           /* Cursor changes to pointer on hover */
+    border-radius: 5px;        /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+    .orange-button:hover {
+        background-color: #c86717; /* Darker orange on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
+    }
+
